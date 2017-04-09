@@ -12,7 +12,7 @@ The steps are as follows:
 
 1.  Construct a brand name library and a product name library. Please refer to `library_builder.py`.
 2.  Build a tag table using the product name library and brand name library. Please refer to `tagTable_builder.py`.
-3.  Build a lookup tagger using `nltk.UnigramTagger` with the built tag table.
+3.  Build a lookup tagger using \`nltk.UnigramTagger' with the built tag table.
 4.  After processing each product title, generate unit-, bi-, and tri-grams. A lot of product and brand names contain ngrams.
 5.  Look up trigrams first, and then bigrams, and at last unigrams. Trigrams are taken with highest priority and unigrams the lowest.
 6.  If no product name is found in the product title after all the lookup procedure, extract the last alpha noun in the title as the product name. If no brand name is found, leave it empty.
@@ -36,12 +36,14 @@ Clone this directory
 Usage
 -----
 
+If install using pip:
+
     $ python
-    >>> from product_tagger import tag_product
-    >>> tag_product('Makibes Unisex Red LED Digital Band Wrist Watch')
+    >>> from product_tagger import product_tagger
+    >>> product_tagger.tag_product('Makibes Unisex Red LED Digital Band Wrist Watch')
     (u'watch', u'makibes', u'unisex red led digital band wrist')
 
-The tagger can also be called in a shell
+The tagger can also be called in a shell. After cloning the repository:
 
     $ cd product_tagger
     $ python product_tagger.py 'Makibes Unisex Red LED Digital Band Wrist Watch'
@@ -77,4 +79,3 @@ License
 -------
 
 Refer to LICENSE
-# product_tagger

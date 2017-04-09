@@ -51,6 +51,8 @@ import os
 import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
+this_dir, this_filename = os.path.split(__file__)
+Table_PATH = os.path.join(this_dir, "resources", "tagTable.pkl")
 
 def extract_words(all_words):
 	"""
@@ -124,7 +126,7 @@ def tag_product(product_title):
 	"""
 
 	## build a tagger model
-	with open('resources/tagTable.pkl','rb') as f:
+	with open(Table_PATH,'rb') as f:
 		tag_table = pickle.load(f)
 	tagger = nltk.UnigramTagger(model=tag_table, backoff=nltk.DefaultTagger('D'))
 
