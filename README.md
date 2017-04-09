@@ -78,4 +78,4 @@ Requirements
 License
 -------
 
-Refer to LICENSE
+MIT License
