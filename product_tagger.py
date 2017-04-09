@@ -31,7 +31,7 @@ The steps are as follows:
 Usage:
 	>> tag_product(title)
 	return (core_term, brand, descriptions)
-	
+
 Example:
 	>> tag_product('Makibes Unisex Red LED Digital Band Wrist Watch')
 	(u'watch', u'makibes',u'unisex red led digital band wrist')
@@ -181,17 +181,28 @@ def extract_file(excel_sheet, filename_save):
 			product_title = excel_sheet.cell(row_idx, 1).value
 			core_term, brand, disc = tag_product(product_title)
 			f.write(product_title.replace(',','')+','+core_term+','+brand+','+disc+'\n')
-	
 
-if __name__ == '__main__':
+def project_reuslt():
+	"""
+	Testing the tagger on project data. Uncomment `project_reuslt()' and
+	comment other lines and run.
 
+	"""
 	file_dir = 'Product Data.xlsx'
 	workbook = xlrd.open_workbook(file_dir)
 	sheet_sample = workbook.sheet_by_index(0)
 	sheet_test = workbook.sheet_by_index(1)
 
 	extract_file(sheet_sample, 'results/sample_results.csv')
-	extract_file(sheet_test, 'results/test_results.csv')
+	extract_file(sheet_test, 'results/test_results.csv')	
+
+if __name__ == '__main__':
+	core_term, brand, disc = tag_product(sys.argv[1])
+	print('===========')
+	print('Core term: ',core_term)
+	print('Brand: ',brand)
+	print('Discriptions: ',disc)
+	# project_reuslt()
 
 
 
